@@ -11,12 +11,12 @@ export interface Car {
   effektHk: number
   batteriKwh: number | null
   rekkeviddeWltpKm: number
-  ladehastighetKw: number // maks DC, ca./modelltypisk
-  ladetid10til80Min: number // ca./modelltypisk
+  ladehastighetKw: number
+  ladetid10til80Min: number
   hengervektKg: number
   bagasjeromL: number
-  frunkL: number // ca./modelltypisk
-  bagasjeromSeterNedL: number // ca./modelltypisk
+  frunkL: number
+  bagasjeromSeterNedL: number
   seter: number
   hjuldrift: string
   multimedia: string
@@ -25,12 +25,13 @@ export interface Car {
   garantiMnd: number | null
   garantiKm: number | null
   garantiNotat: string
-  vurdering: number // 1-10, 10 = beste kjop
+  vurdering: number
   vurderingBegrunnelse: string
 }
 
-// Kilde: FINN-annonser (favorittliste). Felt merket "ca." er modelltypiske
-// spesifikasjoner der FINN ikke oppgir verdien i annonsen.
+// Kilde: FINN-annonser (favorittliste "Serioese kandidater til ny elbil").
+// Felt merket "ca."/"~" (ladehastighet, ladetid, frunk, volum med seter nedfelt) er
+// modelltypiske tall der FINN ikke oppgir verdien i annonsen.
 export const cars: Car[] = [
   {
     id: 'xpeng-g6',
@@ -53,7 +54,7 @@ export const cars: Car[] = [
     bagasjeromSeterNedL: 1375,
     seter: 5,
     hjuldrift: 'Firehjulsdrift',
-    multimedia: '15\" touchskjerm, Apple CarPlay, DAB, Bluetooth, navigasjon, OTA-oppdateringer',
+    multimedia: '15" touchskjerm, Apple CarPlay, DAB, Bluetooth, navigasjon, OTA-oppdateringer',
     kjoreassistanse: 'XPILOT: adaptiv cruise, 360-kamera, blindsonevarsling, filholder, auto park',
     setemuligheter: 'El. seter m/minne, varme og ventilasjon, skinn, delt nedfellbart baksete',
     garantiMnd: 76,
@@ -61,6 +62,36 @@ export const cars: Car[] = [
     garantiNotat: 'Resterende nybilgaranti (76 md. / 160 000 km)',
     vurdering: 9,
     vurderingBegrunnelse: 'Lav km, svaert lang gjenvaerende garanti, god plass og rekkevidde til en konkurransedyktig pris. Sterkeste totalpakke.'
+  },
+  {
+    id: 'xpeng-g6-orre',
+    finnkode: '461961878',
+    finnUrl: 'https://www.finn.no/mobility/item/461961878',
+    merke: 'XPeng',
+    modell: 'G6',
+    variant: 'AWD Performance',
+    modellaar: 2025,
+    km: 9352,
+    pris: 477505,
+    effektHk: 486,
+    batteriKwh: 87,
+    rekkeviddeWltpKm: 510,
+    ladehastighetKw: 280,
+    ladetid10til80Min: 12,
+    hengervektKg: 1500,
+    bagasjeromL: 571,
+    frunkL: 70,
+    bagasjeromSeterNedL: 1374,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: '15,6" touchskjerm, digitalt foererdisplay, DAB, navigasjon, traadloes lading, nettleser, stemmeassistent',
+    kjoreassistanse: 'XPILOT: adaptiv cruise, 360-kamera, blindsone, auto park, filholder, skiltgjenkjenning, tretthetsvarsling',
+    setemuligheter: 'El. skinnseter m/minne, varme/ventilasjon/massasje foran, varme bak, korsrygg, delt baksete, varmepumpe',
+    garantiMnd: 72,
+    garantiKm: 160000,
+    garantiNotat: 'Resterende nybilgaranti (ca. 6 aar / 160 000 km). Privat selger.',
+    vurdering: 9,
+    vurderingBegrunnelse: 'Lavest km av alle (9 352), 800V og 12 min lading, varmepumpe. Bare litt hoeyere pris enn topp-kandidaten gjoer den nesten like sterk.'
   },
   {
     id: 'changan-deepal-s05',
@@ -120,7 +151,67 @@ export const cars: Car[] = [
     garantiKm: 138000,
     garantiNotat: 'Nybilgaranti (80 md. / 138 000 km)',
     vurdering: 8,
-    vurderingBegrunnelse: 'Voldsom ytelse, 800V superlading, mye plass og lang garanti. Litt hoyere pris demper scoren noe.'
+    vurderingBegrunnelse: 'Voldsom ytelse (751 hk), 800V superlading, mye plass og lang garanti. Litt hoeyere pris demper scoren noe.'
+  },
+  {
+    id: 'mg-im6-ny-rwd',
+    finnkode: '461860322',
+    finnUrl: 'https://www.finn.no/mobility/item/461860322',
+    merke: 'MG',
+    modell: 'IM6',
+    variant: '100kWh RWD Long Range (ny)',
+    modellaar: 2026,
+    km: 10,
+    pris: 537900,
+    effektHk: 407,
+    batteriKwh: 100,
+    rekkeviddeWltpKm: 545,
+    ladehastighetKw: 396,
+    ladetid10til80Min: 17,
+    hengervektKg: 1500,
+    bagasjeromL: 665,
+    frunkL: 32,
+    bagasjeromSeterNedL: 1700,
+    seter: 5,
+    hjuldrift: 'Bakhjulsdrift',
+    multimedia: 'Stor skjerm, head-up display, DAB, navigasjon, 20 hoeyttalere premium lyd',
+    kjoreassistanse: 'Adaptiv cruise, filholder, 360-kamera, noedbremsassistent, frontkamera',
+    setemuligheter: 'El. seter m/minne, ventilasjon og massasje foran, varme, skinn, panorama, nedfellbart baksete',
+    garantiMnd: 84,
+    garantiKm: 150000,
+    garantiNotat: 'Nybilgaranti fra 1. gang reg. (84 md. / 150 000 km)',
+    vurdering: 8,
+    vurderingBegrunnelse: 'Helt ny (10 km), lengst rekkevidde i klassen (545 km) og full 7 aars garanti. RWD og lavere effekt enn AWD-soesteren, men best paa rekkevidde/garanti.'
+  },
+  {
+    id: 'mg-im6-rwd-moss',
+    finnkode: '447386770',
+    finnUrl: 'https://www.finn.no/mobility/item/447386770',
+    merke: 'MG',
+    modell: 'IM6',
+    variant: '100kWh RWD',
+    modellaar: 2025,
+    km: 50,
+    pris: 537900,
+    effektHk: 400,
+    batteriKwh: 100,
+    rekkeviddeWltpKm: 545,
+    ladehastighetKw: 396,
+    ladetid10til80Min: 17,
+    hengervektKg: 1500,
+    bagasjeromL: 665,
+    frunkL: 32,
+    bagasjeromSeterNedL: 1700,
+    seter: 5,
+    hjuldrift: 'Bakhjulsdrift',
+    multimedia: '26,3" ultrabred skjerm, traadloes CarPlay/Android Auto, DAB, navigasjon, OTA, traadloes lading',
+    kjoreassistanse: 'Adaptiv cruise, iAD assistent, 360-kamera, blindsone, auto park, nattsyn, skiltgjenkjenning, firehjulsstyring',
+    setemuligheter: 'El. skinnseter m/minne, varme/ventilasjon/massasje foran, varme bak, korsrygg, delt baksete, panorama, varmepumpe',
+    garantiMnd: 84,
+    garantiKm: 150000,
+    garantiNotat: 'Nybilgaranti (84 md. / 150 000 km)',
+    vurdering: 8,
+    vurderingBegrunnelse: 'Praktisk talt ny (50 km), 545 km rekkevidde, enorm 26,3" skjerm og full garanti. Solid totalpakke til lavere ytelse enn AWD.'
   },
   {
     id: 'smart-5-brabus',
@@ -150,7 +241,67 @@ export const cars: Car[] = [
     garantiKm: 100000,
     garantiNotat: 'Tilnaermet ny - full nybilgaranti (ca. 48 md. / 100 000 km)',
     vurdering: 7,
-    vurderingBegrunnelse: 'Toppmodell med lengst rekkevidde og rask lading, men ligger i ovre prissjikt.'
+    vurderingBegrunnelse: 'Toppmodell med lengst rekkevidde og rask lading, men ligger i oevre prissjikt.'
+  },
+  {
+    id: 'smart-5-brabus-hamar',
+    finnkode: '464344025',
+    finnUrl: 'https://www.finn.no/mobility/item/464344025',
+    merke: 'Smart',
+    modell: '#5',
+    variant: 'Brabus (forhandler, hengerfeste + 21")',
+    modellaar: 2026,
+    km: 2000,
+    pris: 599900,
+    effektHk: 646,
+    batteriKwh: 94,
+    rekkeviddeWltpKm: 540,
+    ladehastighetKw: 400,
+    ladetid10til80Min: 18,
+    hengervektKg: 1600,
+    bagasjeromL: 630,
+    frunkL: 70,
+    bagasjeromSeterNedL: 1530,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: 'Tre skjermer, Apple CarPlay, DAB, navigasjon, gjenfinningssystem',
+    kjoreassistanse: 'Adaptiv cruise, 360-kamera, blindsoneassistent, auto park, fjernlysassistent',
+    setemuligheter: 'El. sportsseter, skinn/alcantara, delt baksete',
+    garantiMnd: 60,
+    garantiKm: null,
+    garantiNotat: 'Demobil hos forhandler, full nybilgaranti + 5 aar reklamasjonsrett. Hengerfeste og 21" vinterhjul inkl.',
+    vurdering: 6,
+    vurderingBegrunnelse: 'Samme toppmodell som soesteren, men hoeyest pris i utvalget (599 900). Ekstrautstyr (hengerfeste/vinterhjul) veier litt opp.'
+  },
+  {
+    id: 'smart-5-brabus-dilling',
+    finnkode: '461869236',
+    finnUrl: 'https://www.finn.no/mobility/item/461869236',
+    merke: 'Smart',
+    modell: '#5',
+    variant: 'Brabus (matt graa, hengerfeste)',
+    modellaar: 2026,
+    km: 2500,
+    pris: 599900,
+    effektHk: 646,
+    batteriKwh: 94,
+    rekkeviddeWltpKm: 540,
+    ladehastighetKw: 400,
+    ladetid10til80Min: 18,
+    hengervektKg: 1600,
+    bagasjeromL: 630,
+    frunkL: 70,
+    bagasjeromSeterNedL: 1530,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: 'Tre skjermer, Apple CarPlay, DAB, navigasjon, gjenfinningssystem',
+    kjoreassistanse: 'Adaptiv cruise, 360-kamera, blindsoneassistent, auto park, fjernlysassistent',
+    setemuligheter: 'El. sportsseter, skinn/alcantara, delt baksete',
+    garantiMnd: 48,
+    garantiKm: null,
+    garantiNotat: 'Tilnaermet ny, nybilgaranti fra 1. gang reg. (FINN oppgir effekt feil som 190 hk; Brabus er 646 hk).',
+    vurdering: 6,
+    vurderingBegrunnelse: 'Lekker matt graa Brabus med hengerfeste, men samme hoeye pris (599 900) som den andre forhandler-Brabusen.'
   },
   {
     id: 'exlantix-es',
@@ -165,22 +316,22 @@ export const cars: Car[] = [
     effektHk: 480,
     batteriKwh: 77,
     rekkeviddeWltpKm: 500,
-    ladehastighetKw: 250,
-    ladetid10til80Min: 20,
+    ladehastighetKw: 420,
+    ladetid10til80Min: 10,
     hengervektKg: 1500,
     bagasjeromL: 450,
     frunkL: 0,
     bagasjeromSeterNedL: 1100,
     seter: 5,
     hjuldrift: 'Firehjulsdrift',
-    multimedia: 'Stor touchskjerm, Bluetooth, frontkamera, keyless go, forsterkerenhet',
-    kjoreassistanse: 'Adaptiv cruise, 360-kamera, frontkamera, antiskrens/antispinn',
-    setemuligheter: 'El. seter m/minne, skinn, panorama, mork-tonede vinduer bak',
+    multimedia: 'Stor touchskjerm, digitalt display, 23 hoeyttalere, Apple CarPlay/Android Auto, DAB, navigasjon, traadloes lading for/bak, appstyring',
+    kjoreassistanse: 'Adaptiv cruise, 360-kamera, frontkamera, auto noedbrems, antiskrens/antispinn, parkeringssensorer',
+    setemuligheter: 'El. seter m/minne for/bak, varme/ventilasjon/massasje, skinn, 3-sone klima, panorama, ramme-loese doerer, moerktonede vinduer',
     garantiMnd: 84,
     garantiKm: 150000,
-    garantiNotat: 'Nybilgaranti fra 1. gang reg. (84 md. / 150 000 km)',
-    vurdering: 7,
-    vurderingBegrunnelse: 'Lengst garanti av alle og praktisk talt ny, men ukjent merke og sedan-format gjor den mindre fleksibel.'
+    garantiNotat: 'Nybilgaranti fra 1. gang reg. (84 md. / 150 000 km). 800V-plattform.',
+    vurdering: 8,
+    vurderingBegrunnelse: 'Lengst garanti av alle (84 md), 800V med 420 kW lading (10-15 min), rikt utstyr og praktisk talt ny. Ukjent merke og sedan-format trekker litt.'
   },
   {
     id: 'byd-sealion-7',
@@ -238,9 +389,69 @@ export const cars: Car[] = [
     setemuligheter: 'El. seter, skinn, korsryggstotte, delt nedfellbart baksete',
     garantiMnd: 24,
     garantiKm: 120000,
-    garantiNotat: 'Nybilgaranti - ca. rest (5 ars merkegaranti fra 2023)',
+    garantiNotat: 'Resterende nybilgaranti (ca. rest av 5 aars merkegaranti fra 2023)',
     vurdering: 6,
-    vurderingBegrunnelse: 'Stor og kraftig premium-SUV, men hoy km og hoyere pris gjor den til et svakere kjop enn G6.'
+    vurderingBegrunnelse: 'Stor og kraftig premium-SUV, men hoey km og hoeyere pris gjoer den til et svakere kjoep enn G6.'
+  },
+  {
+    id: 'xpeng-g9-honefoss',
+    finnkode: '448845745',
+    finnUrl: 'https://www.finn.no/mobility/item/448845745',
+    merke: 'XPeng',
+    modell: 'G9',
+    variant: 'Performance AWD Long Range 551hk',
+    modellaar: 2023,
+    km: 47000,
+    pris: 588000,
+    effektHk: 551,
+    batteriKwh: 99,
+    rekkeviddeWltpKm: 520,
+    ladehastighetKw: 300,
+    ladetid10til80Min: 20,
+    hengervektKg: 1500,
+    bagasjeromL: 660,
+    frunkL: 71,
+    bagasjeromSeterNedL: 1576,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: 'Tre infotainmentskjermer, DAB, navigasjon, soft close doerer',
+    kjoreassistanse: 'Adaptiv cruise, 360-kamera, blindsonevarsel, keyless go',
+    setemuligheter: 'El. skinnseter m/minne, massasje, varme for/bak, luftfjaering, panorama',
+    garantiMnd: 60,
+    garantiKm: 150000,
+    garantiNotat: 'Nybilgaranti (60 md. / 150 000 km) + 8 aar/160 000 km batterigaranti',
+    vurdering: 5,
+    vurderingBegrunnelse: 'Velutstyrt med luftfjaering og svingbart hengerfeste, men hoeyest pris av G9-ene (588 000) trekker ned.'
+  },
+  {
+    id: 'xpeng-g9-sandvika',
+    finnkode: '447268600',
+    finnUrl: 'https://www.finn.no/mobility/item/447268600',
+    merke: 'XPeng',
+    modell: 'G9',
+    variant: '98kWh AWD Performance',
+    modellaar: 2023,
+    km: 52100,
+    pris: 525000,
+    effektHk: 551,
+    batteriKwh: 98,
+    rekkeviddeWltpKm: 520,
+    ladehastighetKw: 300,
+    ladetid10til80Min: 20,
+    hengervektKg: 1500,
+    bagasjeromL: 660,
+    frunkL: 71,
+    bagasjeromSeterNedL: 1576,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: 'Premium Cockpit (tre skjermer), Dynaudio, DAB, navigasjon',
+    kjoreassistanse: 'Adaptiv cruise, 360-kamera, BLIS blindsone, skiltgjenkjenning',
+    setemuligheter: 'El. seter, massasje for/bak, varme for/bak, ventilasjon foran, luftfjaering, panorama',
+    garantiMnd: 54,
+    garantiKm: 147900,
+    garantiNotat: 'Nybilgaranti (54 md. / 147 900 km) + 8 aar/160 000 km batterigaranti',
+    vurdering: 6,
+    vurderingBegrunnelse: 'Velutstyrt G9 med luftfjaering og varmepumpe til lavere pris enn Honefoss-bilen, men hoey km (52 100).'
   },
   {
     id: 'voyah-free',
@@ -270,7 +481,37 @@ export const cars: Car[] = [
     garantiKm: 100000,
     garantiNotat: 'Resterende nybilgaranti (19 md. / 100 000 km)',
     vurdering: 6,
-    vurderingBegrunnelse: 'Billigst totalt, kraftig og hoyest hengervekt (2000 kg), men hoy km og kort gjenvaerende garanti.'
+    vurderingBegrunnelse: 'Billig og kraftig med hoeyest hengervekt (2000 kg), men hoey km og kort gjenvaerende garanti.'
+  },
+  {
+    id: 'voyah-free-melhus',
+    finnkode: '397556420',
+    finnUrl: 'https://www.finn.no/mobility/item/397556420',
+    merke: 'VOYAH',
+    modell: 'FREE',
+    variant: 'Premium AWD',
+    modellaar: 2023,
+    km: 62000,
+    pris: 384532,
+    effektHk: 490,
+    batteriKwh: 100,
+    rekkeviddeWltpKm: 500,
+    ladehastighetKw: 100,
+    ladetid10til80Min: 45,
+    hengervektKg: 1840,
+    bagasjeromL: 560,
+    frunkL: 72,
+    bagasjeromSeterNedL: 1320,
+    seter: 5,
+    hjuldrift: 'Firehjulsdrift',
+    multimedia: 'Tre 12,3" skjermer, Dynaudio Hifi, DAB, navigasjon, Bluetooth',
+    kjoreassistanse: 'Adaptiv cruise, ryggekamera/omgivelseskamera, nattkamera, fjernlysassistent, antiskrens/antispinn, parkeringssensorer',
+    setemuligheter: 'El. seter m/minne, varme/ventilasjon/massasje foran, skinn/delskinn, sportsseter, panorama, luftfjaering',
+    garantiMnd: 19,
+    garantiKm: 100000,
+    garantiNotat: 'Resterende nybilgaranti. 60 000 km service nylig utfoert. 1 eier.',
+    vurdering: 6,
+    vurderingBegrunnelse: 'Billigst totalt (384 532), godt utstyrt med frunk og luftfjaering, 1 eier. Trekkes for hoey km og kort gjenvaerende garanti.'
   }
 ]
 
